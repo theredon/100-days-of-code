@@ -7,16 +7,15 @@ chosen_word = random.choice(word_list)
 print(f"The solution is {chosen_word}")
 
 display = []
-position = 0
+word_length = len(chosen_word)
 
-for i in range(len(chosen_word)):
+for _ in range(word_length):
     display.append("_")
 
 guess = input("Guess a letter: ").lower()
 
-for letter in chosen_word:
-    if letter == guess:
-        display[position] = letter
-    position += 1
+for position in range(word_length):
+    if chosen_word[position] == guess:
+        display[position] = chosen_word[position]
     
 print(display)
