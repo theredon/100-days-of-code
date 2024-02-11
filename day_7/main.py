@@ -1,15 +1,12 @@
 import random
 
 word_list = ["ardvark", "baboon", "camel"]
-r = random.randint(0, 2)
-word = word_list[r]
+chosen_word = random.choice(word_list)
 
-user_guess = input("Guess a letter: ")
+guess = input("Guess a letter: ").lower()
 
-for char in word:
-    if user_guess == char:
+for letter in chosen_word:
+    if letter == guess:
         print("Right")
     else:
         print("Wrong")
-
-print(word)
