@@ -7,12 +7,13 @@ chosen_word = random.choice(word_list)
 print(f"The solution is {chosen_word}")
 
 display = []
+end_of_game = False
 word_length = len(chosen_word)
 
 for _ in range(word_length):
     display.append("_")
 
-while "_" in display:
+while not end_of_game:
     guess = input("Guess a letter: ").lower()
 
     for position in range(word_length):
@@ -20,5 +21,8 @@ while "_" in display:
             display[position] = chosen_word[position]
     
     print(display)
+    
+    if "_" not in display:
+        end_of_game = True
 
 print("You win!")
