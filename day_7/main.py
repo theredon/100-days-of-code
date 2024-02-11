@@ -12,10 +12,13 @@ word_length = len(chosen_word)
 for _ in range(word_length):
     display.append("_")
 
-guess = input("Guess a letter: ").lower()
+while "_" in display:
+    guess = input("Guess a letter: ").lower()
 
-for position in range(word_length):
-    if chosen_word[position] == guess:
-        display[position] = chosen_word[position]
+    for position in range(word_length):
+        if chosen_word[position] == guess:
+            display[position] = chosen_word[position]
     
-print(display)
+    print(display)
+
+print("You win!")
