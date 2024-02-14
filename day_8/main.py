@@ -22,4 +22,9 @@ def decrypt(encrypted_text, cipher_shift):
         plain_text += alphabet[new_index]
     print(f"The decrypted text is {plain_text}")
 
-decrypt(encrypted_text=text, cipher_shift=shift)
+if direction == 'decode':
+    decrypt(encrypted_text=text, cipher_shift=shift)
+elif direction == 'encode':
+    encrypt(plain_text=text, cipher_shift=shift)
+else:
+    print("You did not make a valid selection, exiting.")
