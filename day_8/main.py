@@ -13,4 +13,13 @@ def encrypt(plain_text, cipher_shift):
         cipher_text += alphabet[new_index]
     print(f"The encoded text is {cipher_text}")
 
-encrypt(plain_text=text, cipher_shift=shift)
+def decrypt(encrypted_text, cipher_shift):
+    plain_text = ""
+    for char in encrypted_text:
+        new_index = alphabet.index(char) - cipher_shift
+        if new_index < 0:
+            new_index += len(alphabet)
+        plain_text += alphabet[new_index]
+    print(f"The decrypted text is {plain_text}")
+
+decrypt(encrypted_text=text, cipher_shift=shift)
