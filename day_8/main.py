@@ -4,27 +4,19 @@ direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message: \n").lower()
 shift = int(input("Type the shift number:\n"))
 
-def encrypt(plain_text, cipher_shift):
+def caeser(plain_text, cipher_shift, shift_direction):
     cipher_text = ""
+    if shift_direction == 'decode':
+        cipher_shift *= -1
     for char in plain_text:
         new_index = alphabet.index(char) + cipher_shift
-        if new_index >= len(alphabet):
+        if shift_direction == "decode" and new_index < 0:
+            new_index += len(alphabet)
+        elif shift_direction == "encode" and new_index >= len(alphabet):
             new_index -= len(alphabet)
         cipher_text += alphabet[new_index]
-    print(f"The encoded text is {cipher_text}")
+    
+    print(f"The {shift_direction}d text is {cipher_text}")
+    
 
-def decrypt(encrypted_text, cipher_shift):
-    plain_text = ""
-    for char in encrypted_text:
-        new_index = alphabet.index(char) - cipher_shift
-        if new_index < 0:
-            new_index += len(alphabet)
-        plain_text += alphabet[new_index]
-    print(f"The decrypted text is {plain_text}")
-
-if direction == 'decode':
-    decrypt(encrypted_text=text, cipher_shift=shift)
-elif direction == 'encode':
-    encrypt(plain_text=text, cipher_shift=shift)
-else:
-    print("You did not make a valid selection, exiting.")
+caeser(plain_text=text, cipher_shift=shift, shift_direction=direction)
