@@ -17,13 +17,14 @@ def divide(n1, n2):
 
 
 def calculator():
+    print(logo)
     calculator_continue = True
-    first_num = int(input("What is the first number?: "))
+    first_num = float(input("What is the first number?: "))
     for key in operations:
         print(key)
     while calculator_continue:
         operation_choice = input("Pick an operation: ")
-        second_num = int(input("What is the next number?: "))
+        second_num = float(input("What is the next number?: "))
         function = operations[operation_choice]
         result = function(first_num, second_num)
         print(f"{first_num} {operation_choice} {second_num} = {result}")
@@ -42,6 +43,5 @@ operations = {"+": add,
               "*": multiply,
               "/": divide}
 
-print(logo)
 
 calculator()
